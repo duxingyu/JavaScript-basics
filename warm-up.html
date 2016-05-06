@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS热身练习</title>
+	<style type="text/css">
+		body{margin: 0;}
+		body,html{height: 100%;}
+		/*以上为ie6所需*/
+		h3,ul,input{margin: 0;padding: 0;font-size: 12px;}
+		li{list-style: none;}
+		#div1{width: 100px;height: 100px;border: 5px solid #000;margin-top: 20px;}
+		#btn1{background: red;color: #fff;width: 100px;height: 30px;border: none;}
+		#wrap1{background: #000;opacity: 0.5;filter:alpha(opacity=50); width: 100%;height: 100%;position: absolute;top: 0;left: 0;display: none;}
+		#wrap2{width: 240px;height: 160px;background: #fff;border: 5px solid #000;padding: 10px;position: absolute;top: 30%;left: 50%;display: none;}
+		.list{}
+		.list .listt{height: 30px;width: 300px;margin-bottom: 10px;}
+		.list h3{float: left;font-size: 16px;}
+		.list ul li{float: left;width: 30px;height: 30px;background: #fff;margin: 0 5px;text-align: center;border: 1px solid gray;}
+		.list span{color: gray;line-height: 30px;display: block;cursor: pointer;}
+		#wrap2 form{padding-left: 50px;}
+		#wrap2 input{width: 80px;height: 30px;border: none;color: #fff;float:left;margin: 5px;background: blue;display: block;}
+		#red{background: #58E282;}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+		var setting = document.getElementById('btn1');
+		var w1 = document.getElementById('wrap1');
+		var w2 = document.getElementById('wrap2');
+		var b1 = document.getElementById('reset');
+		var b2 = document.getElementById('sure');
+		var d1 = document.getElementById('div1');
+		var r1 = document.getElementById('red');
+		setting.onclick = function (){
+			w1.style.display = 'block';
+			w2.style.display = 'block';
+		}
+		b2.onclick = function () {
+			w1.style.display = 'none';
+			w2.style.display = 'none';
+		}
+		b1.onclick = function () {
+			d1.style.width = '100px';
+			d1.style.height = '100px';
+			d1.style.background = '#fff';
+		}
+		r1.onmouseover =function(){
+			r1.style.borderColor = '#000';
+			r1.style.background = '#f60';
+			r1.style.color = '#000';
+
+		}
+		r1.onmouseout =function(){
+			r1.style.borderColor = 'gray';
+			r1.style.background = '#58E282';
+		}
+		r1.onclick = function(){
+			d1.style.background = 'red';
+		}
+
+	}
+	</script>
+</head>
+<body>
+	<strong>请为下面的div设置样式</strong>
+	<input type="button" id="btn1" value="点击设置">
+	<div id="div1"></div>
+	<div id="wrap1">
+	</div>
+	<div id="wrap2">
+		<ul class="list">
+			<li class="listt">
+				<h3>请选择背景色：</h3>
+				<ul>
+					<li id="red"><span>红</span></li>
+					<li><span>黄</span></li>
+					<li><span>蓝</span></li>
+				</ul>
+			</li>
+			<li class="listt">
+				<h3>请选择宽(px)：</h3>
+				<ul>
+					<li id="wid1"><span>200</span></li>
+					<li><span>300</span></li>
+					<li><span>400</span></li>
+				</ul>
+			</li>
+			<li class="listt">
+				<h3>请选择高(px)：</h3>
+				<ul>
+					<li><span>200</span></li>
+					<li><span>300</span></li>
+					<li><span>400</span></li>
+				</ul>
+			</li>
+		</ul>
+		<form>
+			<input type="button" value="恢复" id="reset">
+			<input type="button" value="确定" id="sure">
+		</form>
+	</div>
+</body>
+</html>
