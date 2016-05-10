@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>聊天界面</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style >
+		.wrap{width: 400px;height: 561px;margin: 10px auto;border: 1px solid #000;}
+		#dis{width: 390px;height: 500px;background: #ccc;border-bottom: 1px solid #f60;padding: 5px;overflow: auto;position: relative;}
+		img{width: 30px;height: 30px;}
+		#inp{width: 390px;height: 30px;background: gray;padding:10px 5px;}
+		#img1{background: #fff;display: block;float: left;cursor: pointer;border-radius: 5px;}
+		#text{width: 300px;height: 30px;line-height: 30px;text-indent: 5px;border: none;float: left;margin-left: 5px;border-radius: 5px;}
+		#send{font-size: 20px;line-height: 30px;color: #fff;background: gray;float: right;cursor: pointer;border:none;}
+		#dis p{margin-bottom: 4px;position: relative;/*overflow: hidden;*/}/* 清浮动 */
+		#dis img{position: absolute;top: 0;}
+		#dis span{line-height: 30px;border-radius: 5px;padding: 0 5px;}
+		.g1{}
+		.g1 img{left: 5px;}
+		.g1 span{background: red;margin-left: 40px;float: left;}
+		.g2{}
+		.g2 img{right: 5px;}
+		.g2 span{background: blue;margin-right: 40px;float: right;}
+	</style>
+	<script>
+		window.onload = function () {
+			oDiv = document.getElementById('dis');
+			oText = document.getElementById('text');
+			oBtn = document.getElementById('send');
+			oImg = document.getElementById('img1');
+			var onOff = true;
+			oImg.onclick = function(){
+				if (onOff) {
+					oImg.src = 'imgs/cL/2.gif';
+					onOff = false;
+				}else{
+					oImg.src = 'imgs/cL/1.gif';
+					onOff = true;
+				}	
+			}
+			oBtn.onclick = function () {
+				if (oText.value == '') {
+					alert('请输入内容！');
+				}else{
+					var onTab = 'g1 clear';
+					if (!onOff) {
+						onTab = 'g2 clear';
+					} 
+					oDiv.innerHTML = '<p class="'+onTab+'"><img src="'+oImg.src+'" alt=""><span>'+oText.value+'</span></p>'+oDiv.innerHTML;
+						oText.value = '';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<div id="dis">
+		<!-- 	<p class="g1 clear">
+				<img src="imgs/cL/1.gif" alt="">
+				<span>啊啊啊</span>
+			</p>
+			<p class="g2 clear">
+				<img src="imgs/cL/2.gif" alt="">
+				<span>啊啊啊</span>
+			</p> -->
+		</div>
+		<div id="inp">
+			<img src="imgs/cL/1.gif" id="img1">
+			<input type="text" id="text">
+			<input type="button" id="send" value="发送">
+		</div>
+	</div>
+</body>
+</html>

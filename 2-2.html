@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>练习二</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style>
+		#list{position: relative;}
+		li{width: 30px;height: 30px;border:1px solid #000;position: absolute;top: 10px;float: left;line-height: 30px;text-align: center;font-size: 20px;}
+	</style>
+	<script>
+	window.onload = function(){
+		oBtn = document.getElementById('btn1');
+		aList = document.getElementById('list');
+		aLi = aList.getElementsByTagName('li');
+		var onOff = true;
+		oBtn.onclick = function(){
+			if (onOff) {
+				for (var i = 0; i < 100; i++) {
+					aList.innerHTML += '<li>'+(i+1)+'</li>';
+				}
+				var num = 0; 
+				for (var i = 0; i < aLi.length; i++) {
+					aLi[i].style.left = (i%10)*40+10+'px';
+					aLi[i].style.top = 10+num*40+'px';
+					if (aLi[i].style.left == 370+'px') {	
+						num++;
+					}
+				}
+
+				// var num = 4;
+				// for (var i = 0; i < aLi.length; i++) {
+				// 	if (i<=4) {
+				// 		aLi[i].style.top = i*40+10+'px';
+				// 	}else{
+				// 		num--;
+				// 		aLi[i].style.top = num*40+10+'px';
+				// 	}
+				// 	aLi[i].style.left=i*40+10+'px';
+				// }
+				
+				onOff = false;
+			}
+		}
+	};
+	</script>
+</head>
+<body>
+	<input type="button" value="自动生成10个LI" id="btn1">
+	<ul id="list">
+		
+	</ul>
+</body>
+</html>
