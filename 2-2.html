@@ -15,18 +15,29 @@
 		aLi = aList.getElementsByTagName('li');
 		var onOff = true;
 		oBtn.onclick = function(){
+			var str = '';
 			if (onOff) {
 				for (var i = 0; i < 100; i++) {
-					aList.innerHTML += '<li>'+(i+1)+'</li>';
+					str += '<li>'+(i+1)+'</li>';
 				}
-				var num = 0; 
-				for (var i = 0; i < aLi.length; i++) {
-					aLi[i].style.left = (i%10)*40+10+'px';
-					aLi[i].style.top = 10+num*40+'px';
-					if (aLi[i].style.left == 370+'px') {	
+				aList.innerHTML = str;
+				var num = -1; 
+				for (var i = 0; i < aLi.length; i++) {				
+					if (i%10==0) {
 						num++;
 					}
+					aLi[i].style.left = (i%10)*40+10+'px';
+					aLi[i].style.top = 10+num*40+'px';
 				}
+
+				// var num = 0; 
+				// for (var i = 0; i < aLi.length; i++) {
+				// 	aLi[i].style.left = (i%10)*40+10+'px';
+				// 	aLi[i].style.top = 10+num*40+'px';
+				// 	if (aLi[i].style.left == 370+'px') {	
+				// 		num++;
+				// 	}
+				// }
 
 				// var num = 4;
 				// for (var i = 0; i < aLi.length; i++) {
@@ -46,7 +57,7 @@
 	</script>
 </head>
 <body>
-	<input type="button" value="自动生成10个LI" id="btn1">
+	<input type="button" value="点击生成100个LI" id="btn1">
 	<ul id="list">
 		
 	</ul>

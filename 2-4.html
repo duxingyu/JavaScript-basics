@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2练习4</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style type="text/css">
+		.wrap{width: 700px;margin: 100px auto;height: 250px;}
+		.wrap h2{font-size: 12px;line-height: 26px;}
+		#list{width: 514px;padding: 13px 0;height: 180px;border-top: 1px solid #9c9c9c;}
+		#list li{float: left;width: 85px;height: 90px;background: url(imgs/2-4.gif) no-repeat;position: relative;}
+		.shade{width: 232px;height: 138px;position: absolute;top: -130px;left: 39px;background: #fff;border: 1px solid #9c9c9c;display: none;z-index: 1;}
+		.title{width: 221px;height: 52px;margin: 0 1px;background: #dee7ef;padding-left: 9px;position: relative;}
+		.title h3{font-size: 14px;line-height: 28px;padding-bottom: 4px;}
+		.title a{position: absolute;top: 15px;left: 164px;width: 60px;height: 22px;color: #fff;background: #73c65a;line-height: 22px;font-size: 12px;text-align: center;}
+		.tag{line-height: 20px;font-size: 12px;color: #808080;}
+		.content{padding: 6px 29px 0 9px;}
+		.content p{line-height: 20px;font-size: 12px;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			oUl = document.getElementById('list');
+			aLi = oUl.getElementsByTagName('li');
+			var that = null;
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].onmouseover = function(){
+					// this.getElementsByTagName('div')[0].style.display = 'block';
+					that = this;
+					fn1();
+
+				};
+				aLi[i].onmouseout = function(){
+					this.getElementsByTagName('div')[0].style.display = 'none';
+				};
+			}
+			function fn1() {
+				that.getElementsByTagName('div')[0].style.display = 'block';
+			}
+		};
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<h2>最新上线</h2>
+		<ul id="list">
+			<li>
+				<div class="shade">
+					<div class="title">
+						<h3>搜狐汽车图库</h3>
+						<a href="">添加</a>
+						<span class="tag">生活</span>
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站为您提供专业的汽车</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="shade">
+					<div class="title">
+						<h3>搜狐汽车图库</h3>
+						<a href="">添加</a>
+						<span class="tag">生活</span>
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站为您提供专业的汽车</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="shade">
+					<div class="title">
+						<h3>搜狐汽车图库</h3>
+						<a href="">添加</a>
+						<span class="tag">生活</span>
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站为您提供专业的汽车</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="shade">
+					<div class="title">
+						<h3>搜狐汽车图库</h3>
+						<a href="">添加</a>
+						<span class="tag">生活</span>
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站为您提供专业的汽车</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="shade">
+					<div class="title">
+						<h3>搜狐汽车图库</h3>
+						<a href="">添加</a>
+						<span class="tag">生活</span>
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站为您提供专业的汽车</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="shade">
+					<div class="title">
+						<h3>搜狐汽车图库</h3>
+						<a href="">添加</a>
+						<span class="tag">生活</span>
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站为您提供专业的汽车</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="shade">
+					<div class="title">
+						<h3>搜狐汽车图库</h3>
+						<a href="">添加</a>
+						<span class="tag">生活</span>
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站为您提供专业的汽车</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="shade">
+					<div class="title">
+						<h3>搜狐汽车图库</h3>
+						<a href="">添加</a>
+						<span class="tag">生活</span>
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站为您提供专业的汽车</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="shade">
+					<div class="title">
+						<h3>搜狐汽车图库</h3>
+						<a href="">添加</a>
+						<span class="tag">生活</span>
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站为您提供专业的汽车</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="shade">
+					<div class="title">
+						<h3>搜狐汽车图库</h3>
+						<a href="">添加</a>
+						<span class="tag">生活</span>
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站为您提供专业的汽车</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="shade">
+					<div class="title">
+						<h3>搜狐汽车图库</h3>
+						<a href="">添加</a>
+						<span class="tag">生活</span>
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站为您提供专业的汽车</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="shade">
+					<div class="title">
+						<h3>搜狐汽车图库</h3>
+						<a href="">添加</a>
+						<span class="tag">生活</span>
+					</div>
+					<div class="content">
+						<p>搜狐汽车是中国最具人气和影响力的门户汽车网站为您提供专业的汽车</p>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
