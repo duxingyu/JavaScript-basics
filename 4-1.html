@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>判断</title>
+	<style type="text/css">
+		#span1{color: #f60;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oText = document.getElementById('text');
+			var oBtn = document.getElementById('btn');
+			var oSpan = document.getElementById('span1');
+			// var str = oText.value;
+			oBtn.onclick = function(){
+				var str = oText.value;
+				if (str == '') {
+					oSpan.innerHTML = '请输入qq号码';
+				}else if(isNaN(str)){
+					oSpan.innerHTML = '请输入数字';
+				}else if( (0+str) != ('0'+Number(str)) ){
+					oSpan.innerHTML = '数字前不能为零和+';
+				}else if(parseFloat(str)!=parseInt(str)){
+					oSpan.innerHTML = '请输入整数';
+				}else if(str<10000||str>=10000000000){
+					oSpan.innerHTML = '请输入5~10位数字且为正整数';
+				}else{
+					oSpan.innerHTML = '正确';
+				}
+			}
+		};
+	</script>
+</head>
+<body>
+	<span>请输入qq号码：</span>
+	<input type="text" id="text">
+	<input type="button" value="判断" id="btn">
+	<span id="span1"></span>
+	<p>
+		1、有没有输入<br>
+		2、输入的是不是数字<br>
+		3、不能有0在前面<br>
+		4、不能是小数<br>
+		5、输入的数字必须在5位以上、10位以内
+	</p>
+</body>
+</html>

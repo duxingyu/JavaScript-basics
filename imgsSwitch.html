@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>带缩略图的图片切换效果</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style type="text/css">
+		body{background: #776B6B;;}
+		.wrap{width: 400px;margin: 50px auto;}
+		.dis{position: relative;width: 400px;height: 400px;}
+		.dis img{width: 400px;height: 400px;}
+		.dis a{position: absolute;width: 30px;height: 30px;background: #f60;color: #fff;font-size: 30px;line-height: 30px;text-align: center;top: 185px;opacity: 0.4;filter: alpha(opacity=40);}
+		.dis a:hover{opacity: 0.8;filter: alpha(opacity=80);}
+		#prev{left: 5px;}
+		#next{right: 5px;}
+		#list{width: 140px;height: 31px;margin: 10px auto;}
+		#list li{float: left;margin: 10px 10px;position: relative;}
+		#list a{width: 8px;height: 8px;background: #ccc;display: block;}
+		#list .active{background: #f60;}
+		#list .little{width: 50px;height: 50px;position: absolute;padding: 2px;left: -23px;top: -60px;background: #fff;}
+		#list .little img{width: 50px;height: 50px;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oPrev = document.getElementById('prev');
+			var oNext = document.getElementById('next');
+			var oImg = document.getElementById('img1');
+			var oList = document.getElementById('list');
+			var aLi = oList.getElementsByTagName('li');
+			var aLink = oList.getElementsByTagName('a');
+			var aDiv = oList.getElementsByTagName('div');
+			var aImg = oList.getElementsByTagName('img');
+			var arrImg = ['imgs/i1/1.jpg','imgs/i1/2.jpg','imgs/i1/3.jpg','imgs/i1/4.jpg'];
+			//初始化
+			var num = 0;
+			oImg.src = arrImg[num];	
+			aLink[num].className = 'active';
+			//列表滑动，移开，点击事件
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].index = i;
+				aLi[i].onmouseover = function(){
+					aDiv[this.index].className = 'little';
+					aImg[this.index].src = arrImg[this.index];
+				}
+				aLi[i].onmouseout = function(){
+					aDiv[this.index].className = '';
+					aImg[this.index].src = '';
+				}
+				aLi[i].onclick = function(){
+					oImg.src = arrImg[this.index];
+					num = this.index;
+					oTab();
+				}
+			}
+			//prev,next点击事件
+			oPrev.onclick = function(){
+				if (num>0) {
+					num--;
+				}else{
+					num=arrImg.length-1;
+				}
+				oImg.src = arrImg[num];
+				oTab();
+			}
+			oNext.onclick = function(){
+				if (num<arrImg.length-1) {
+					num++;
+				}else{
+					num=0;
+				}
+				oImg.src = arrImg[num];
+				oTab();
+			}
+			//切换方法
+			function oTab() {
+				for (var i = 0; i < aLink.length; i++) {
+							aLink[i].className = '';
+					}
+					aLink[num].className = 'active';
+			}
+		};
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<div class="dis">
+			<img src="" alt="" id="img1">
+			<a href="javascript:;" id="prev"><</a>
+			<a href="javascript:;" id="next">></a>
+		</div>
+		<ul id="list">
+			<li><a href="javascript:;"></a><div><img src=""></div></li>
+			<li><a href="javascript:;"></a><div><img src=""></div></li>
+			<li><a href="javascript:;"></a><div><img src=""></div></li>
+			<li><a href="javascript:;"></a><div><img src=""></div></li>
+		</ul>
+	</div>
+</body>
+</html>
