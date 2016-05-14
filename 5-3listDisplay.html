@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>搜狐视频列表展示</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style type="text/css">
+		.wrap{width: 256px;height: 400px;background: #dee7e7;margin: 30px auto;padding: 0 7px;}
+		.head{height: 38px;border-bottom: 1px solid #94bdd6;position: relative;}
+		.head h1{font-size: 18px;line-height: 38px;color: #103142;text-indent: 12px;float: left;}
+		#list1{position: absolute;top: 13px;right: 0;}
+		#list1 li{float: left;}
+		#list1 a{color: #103142;width: 35px;height: 24px;display: inline-block;font-size: 12px;line-height: 24px;text-align: center;border: 1px solid #94bdd6;}
+		#list1 .lia a{border: 1px solid #94bdd6;border-right: none;}
+		.wrap #list1 .active,#list1 a:hover{background: #fff;border-bottom: 1px solid #fff;font-weight: bold;}
+		#main{height: 332px;}
+		#main ul{}
+		#main li{height: 27px;border-bottom: 1px dashed #fff;position: relative;}
+		#main .active{height: 80px;background: #fff;}
+		#main .active h2{display: none;}
+		#main .active .dis{display: block;}
+		#main h2{font-size: 12px;text-indent: 36px;line-height: 27px;font-weight: normal;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;width: 240px;}
+		#main .dis{display: none;}
+		#main .dis img{position: absolute;left: 35px;top: 7px;border: 1px solid #94bdd6;padding: 2px;}
+		#main .dis p{position: absolute;left: 128px;top: 11px;color: #21638c;font-size: 12px;line-height: 18px;width: 108px;}
+		#main .dis a{position: absolute;left: 207px;top: 52px;display: block;width: 41px;height: 21px;background: #21638c;color: #fff;line-height: 22px;font-size: 12px;text-align: center;}
+		#everyMonth,#all{display: none;}
+		.foot{font-size: 12px;color: #000;float: right;line-height: 28px;}
+	</style>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oList1 = document.getElementById('list1');
+		var aLink = oList1.getElementsByTagName('a');
+		var oMain = document.getElementById('main');
+		var aUl = oMain.getElementsByTagName('ul');
+		var str = null;
+		var num = 0;
+
+		for (var i = 0; i < aUl.length; i++) {
+			listDis(aUl[i]);
+		}
+
+		function listDis(oUl) {
+			var aLi = oUl.getElementsByTagName('li');
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].index = i;
+				aLi[i].onmouseover = function(){
+					for (var j = 0; j < aLi.length; j++) {
+						aLi[j].className = '';
+					}
+					aLi[this.index].className = 'active';
+					str = this.index;
+				}
+				aLi[i].onmouseout = function(){
+					aLi[this.index].className = '';
+					for (var j = 0; j < aLi.length; j++) {
+						if (aLi[j].className == '') {
+							num++;
+						}
+					}
+					if (num == aLi.length) {
+						aLi[this.index].className = 'active';
+						num = 0;
+					}		
+				}
+			}
+		}
+		for (var i = 0; i < aLink.length; i++) {
+			aLink[i].index = i;
+			aLink[i].onmouseover = function(){
+				for (var j = 0; j < aLink.length; j++) {
+					if (j == this.index) {
+						aUl[j].style.display = 'block';
+						aLink[j].className = 'active';
+					}else{
+						aUl[j].style.display = 'none';
+						aLink[j].className =''; 
+					}
+				}
+			}
+		}	
+	}
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<div class="head">
+			<h1>观看排行榜</h1>
+			<ul id="list1">
+				<li class="lia"><a href="" class="active">每日</a></li>
+				<li class="lia"><a href="">每周</a></li>
+				<li><a href="">全部</a></li>
+			</ul>
+		</div>
+		<div id="main">
+			<ul id="everyDay">
+				<li class="active">
+					<h2 href="">探寻传世国宝的千古传奇</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">探寻传世国宝的千古传奇++++++++++++++</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li >
+					<h2 href="">探寻传世国宝的千古传奇</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li >
+					<h2 href="">探寻传世国宝的千古传奇</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li >
+					<h2 href="">探寻传世国宝的千古传奇</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li >
+					<h2 href="">探寻传世国宝的千古传奇</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li >
+					<h2 href="">探寻传世国宝的千古传奇</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li >
+					<h2 href="">探寻传世国宝的千古传奇</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li >
+					<h2 href="">探寻传世国宝的千古传奇</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li >
+					<h2 href="">探寻传世国宝的千古传奇</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+			</ul>
+			<ul id="everyMonth">
+				<li class="active">
+					<h2 href="">经典传奇：探索全世界重大历史事件+++++</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">经典传奇：探索全世界重大历史事件</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">经典传奇：探索全世界重大历史事件</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">经典传奇：探索全世界重大历史事件</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">经典传奇：探索全世界重大历史事件</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">经典传奇：探索全世界重大历史事件</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">经典传奇：探索全世界重大历史事件</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">经典传奇：探索全世界重大历史事件</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">经典传奇：探索全世界重大历史事件</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">经典传奇：探索全世界重大历史事件</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+			</ul>
+			<ul id="all">
+				<li class="active">
+					<h2 href="">解密：关于地球与人类的一千零一问</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">解密：关于地球与人类的一千零一问</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">解密：关于地球与人类的一千零一问</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">解密：关于地球与人类的一千零一问</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">解密：关于地球与人类的一千零一问</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">解密：关于地球与人类的一千零一问</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">解密：关于地球与人类的一千零一问</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">解密：关于地球与人类的一千零一问</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">解密：关于地球与人类的一千零一问</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+				<li>
+					<h2 href="">解密：关于地球与人类的一千零一问</h2>
+					<div class="dis">
+						<img src="imgs/i5/5-2i.gif">
+						<p>深度揭秘传奇事件人物，探索未知、、、</p>
+						<a href="">播放</a>
+					</div>	
+				</li>
+			</ul>
+		</div>	
+		<a href="" class="foot">更多>></a>
+	</div>	
+</body>
+</html>

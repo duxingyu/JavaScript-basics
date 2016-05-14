@@ -21,14 +21,14 @@ window.onload = function (){
 	var arrS = [];
 
 	for( var i=0; i<aLi.length; i++ ){
-		fn1(aLi[i]);
+		fn1(aLi[i],aEm[i],aStrong[i]);
 	}
 	function getMax() {
-		for (var i = 0; i < aLi.length; i++) {
+		for (var i = 0; i < aStrong.length; i++) {
 		if (Number(aStrong[i].innerHTML) > 0) {
 			arrS.push(parseFloat(aEm[i].innerHTML));
         }
-    }
+    }//对所有商品数量进行遍历，找出大于0件的商品存进新的数组
         max = arrS[0];
         if (arrS.length == 1) {
         	 max = arrS[0];
@@ -41,17 +41,16 @@ window.onload = function (){
 					max = arrS[j];
 				}
 				aSpan[2].innerHTML = max;
-			}}
-		arrS =[];
-	
+			}
+		}//找出最大值
+		arrS =[];//对数组进行重置
 	}
-	
 
 
-	function fn1(oLi){
+	function fn1(oLi,oEm,oStrong){
 		var aBtn = oLi.getElementsByTagName('input');
-		var oStrong = oLi.getElementsByTagName('strong')[0];
-		var oEm = oLi.getElementsByTagName('em')[0];
+		// var oStrong = oLi.getElementsByTagName('strong')[0];
+		// var oEm = oLi.getElementsByTagName('em')[0];
 		var oSpan = oLi.getElementsByTagName('span')[0];
 		var n1 = Number(oStrong.innerHTML);			// '0'		=>   0
 		var n2 = parseFloat(oEm.innerHTML);				// '12.5元' => 12.5

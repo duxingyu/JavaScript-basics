@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度文库评分</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style type="text/css">
+		.wrap{width: 500px;margin: 50px auto;height: 62px;position: relative;}
+		p{font-size: 18px;float: left;font-weight: bold;padding-top:24px;}
+		p span {color: red;}
+		#list {float: left;}
+		li {float: left;margin: 20px 0;width: 25px;height: 22px;background: url(imgs/i6/icone.gif) no-repeat;}
+		/*li之间不能留空隙(margin)否则在移动到空隙处会出问题*/
+		.bg1{background: url(imgs/i6/iconb.gif) no-repeat;}
+		.bg2{background: url(imgs/i6/icong.gif) no-repeat;}
+		#tips{z-index: 1;position: absolute;top: 12px;left: 225px;}
+		#span1{line-height: 62px; color: #f60;position: absolute;top: -1000px;left: 225px;}
+		/*通过给tips与span1进行定位并给tips加z-index属性使span1在未点击并移出时隐藏在tips下，通过浮动会在此状态下两者同时出现，不知如何解决*/
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oList = document.getElementById('list');
+			var oTip = document.getElementById('tips');
+			var oSpan = document.getElementById('span1');
+			var aLi = oList.getElementsByTagName('li');
+			var arrS = ['很差','较差','还行','推荐','力荐'];
+			var str = -1;
+			for (var i = 0; i < aLi.length; i++) {
+				aLi[i].index = i;
+				aLi[i].onmouseover = function(){
+					fnClear();
+		            oTip.style.display = 'none';
+		            oSpan.innerHTML = arrS[this.index];
+		            oSpan.style.top = 0;
+		            for (var i=0; i<=this.index; i++) {
+		                    if ( this.index < 2 ) {
+		                            aLi[i].className = 'bg1';
+		                    }
+		                    else {
+		                            aLi[i].className = 'bg2';
+		                    }
+		            	}		
+				}
+				aLi[i].onmouseout = function(){
+					fnClear();
+					if (str != -1) {
+						oTip.style.display = 'none';
+					}else{
+						oTip.style.display = 'block';
+					}
+	                for (var i=0; i<=str; i++) {
+	                        if ( str < 2 ) {
+	                                aLi[i].className = 'bg1';
+	                        }
+	                        else {
+	                                aLi[i].className = 'bg2';
+	                        }
+	                }
+				}
+				aLi[i].onclick = function(){
+					str = this.index;
+
+				}
+			}
+			function fnClear () {
+		        for (var i=0; i<aLi.length; i++) {
+		                aLi[i].className = '';
+			        }
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<p><span>*</span>总体评价：</p>
+		<ul id="list">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<img src="imgs/i6/tip.gif" id="tips">
+		<span id="span1"></span>
+	</div>	
+</body>
+</html>

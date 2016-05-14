@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改文本框的值</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style type="text/css">
+		body{background: #ccc;}
+		.wrap{width: 570px;height: 112px;margin: 30px auto;}
+		h2{height: 30px;color: #fff;background: #6ba542;font-size: 14px;line-height: 30px;text-indent: 24px;}
+		#list {height: 82px;}
+		#list li {height: 40px;border-top: 1px solid #bddede;background: #fff;}
+		#list h3 {font-size: 12px;text-indent: 24px;line-height: 40px;float: left;}
+		#list  .modify{width: 16px;height: 16px;float: left;padding: 12px 10px;}
+		#list input{line-height: 40px;margin:4px 0 4px 24px;float: left;width: 150px;height: 26px;display: none;}
+		#list .click{color: #6ba542;font-size: 12px;line-height: 40px;padding:0 11px;float: left;display: none;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function () {
+			var oList = document.getElementById('list');
+			var aLi = document.getElementsByTagName('li');
+
+			for (var i = 0; i < aLi.length; i++) {
+				modifyName(aLi[i]);
+			}
+			
+			function modifyName(oLi) {
+				var oH3 = oLi.getElementsByTagName('h3')[0];
+				var oInput = oLi.getElementsByTagName('input')[0];
+				var aLink = oLi.getElementsByTagName('a');
+				aLink[0].onclick = function(){
+					oInput.value = oH3.innerHTML;
+					aLink[0].style.display = 'none';
+					oH3.style.display = 'none';
+					oInput.style.display = 'block';
+					aLink[1].style.display = 'block';
+					aLink[2].style.display = 'block';
+				}
+				aLink[1].onclick = function(){
+					if (oInput.value == '') {
+						alert('请输入内容！');
+					}else{
+						oH3.innerHTML = oInput.value;
+						former();
+					};
+					
+				}
+				aLink[2].onclick = function(){
+					former();				
+				}
+				function former() {
+					aLink[0].style.display = 'block';					
+					oH3.style.display = 'block';
+					oInput.style.display = 'none';
+					aLink[1].style.display = 'none';
+					aLink[2].style.display = 'none';
+				}
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<h2>分类名称</h2>
+		<ul id="list">
+			<li>
+				<h3>第一个分类栏</h3>
+				<a href="javascript:;" class="modify"><img src="imgs/i5/mx5-1.gif"></a>
+				<input type="text" name="" >
+				<a href="javascript:;" class="click">保存</a>
+				<a href="javascript:;" class="click">取消</a>
+			</li>
+			<li>
+				<h3>第二个分类栏</h3>
+				<a href="javascript:;" class="modify"><img src="imgs/i5/mx5-1.gif"></a>
+				<input type="text" name="" >
+				<a href="javascript:;" class="click">保存</a>
+				<a href="javascript:;" class="click">取消</a>
+			</li>
+		</ul>	
+	</div>
+</body>
+</html>
