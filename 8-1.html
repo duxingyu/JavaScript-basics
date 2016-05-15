@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>按钮控制商品上下滚动</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style type="text/css">
+		.wrap{width: 166px;height: 450px;margin: 30px auto;position: relative;background: #fff;}
+		.title{background: #294a73;height: 24px;}
+		.title h1{font-size: 12px;color: #fff;float: left;text-indent: 10px;line-height: 24px;}
+		.title a{font-size: 12px;color: #fff;float: right;padding-right: 10px;line-height: 24px;}
+		.main{overflow: hidden;height: 380px;position: relative;margin-top: 24px;}
+		ul{
+		padding:0 12px 0;
+		width:141px;
+		font-size:12px;
+		position:absolute;
+		top:0;
+		left:0;
+	}
+	li{
+		width:141px; /*--141px--*/
+		height:98px;
+		padding-top:11px;
+		border-bottom:1px solid #c6c6ce;
+		vertical-align:top;
+		position:relative;
+	}
+	li div{
+		width:66px;
+	}
+	li img{
+		position:absolute;
+		width:75px;
+		right:0;
+		bottom:24px;
+	}
+		span{position: absolute;left: 0;width: 166px;background: #efefe7;height: 22px;display: block;line-height: 22px;font-size: 12px;text-align: center;cursor: pointer;}
+		#s1{top: 25px;}
+		#s2{top: 428px;}
+		p{font-size: 12px;}
+	</style>
+	<script type="text/javascript">
+	window.onload = function(){
+
+		var oS1 = document.getElementById('s1');
+		var oS2 = document.getElementById('s2');
+		var oImg = document.getElementById('img');
+		var timer = null;
+		oS1.onmousedown = function(){
+			timer = setInterval(function(){
+				oImg.style.top = parseFloat(getComputedStyle(img).top)-1+'px';
+			},14);
+		}
+		oS1.onmouseup = function(){
+			clearInterval(timer);
+		}
+		oS2.onmousedown = function(){
+			timer = setInterval(function(){
+				oImg.style.top = parseFloat(getComputedStyle(img).top)+1+'px';
+			},14);
+		}
+		oS2.onmouseup = function(){
+			clearInterval(timer);
+		}
+	}
+
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<div class="title">
+			<h1>妙味课堂</h1>
+			<a href="">更多>></a>
+		</div>
+		<div class="main">
+			<ul id="img">
+				<li>
+					<div>
+						<br/>
+						<p>Mac翻新产品</p>
+						<p>iPod翻新产品</p>
+					</div>
+					<img src="imgs/i8/0.gif" />
+				</li>
+				<li>
+					<div>
+						<b>翻新笔记本</b><br/><br/>
+						<p>RMB 5,788起最多降低了35%</p>
+					</div>
+					<img src="imgs/i8/0.gif" />
+				</li>
+				<li>
+					<div>
+						<b>翻新台式机</b><br/><br/>
+						<p>RMB 7,698起最多降低了46%</p>
+					</div>
+					<img src="imgs/i8/0.gif" />
+				</li>
+				<li>
+					<div>
+						<b>MAC完全解析</b>
+					</div>
+					<img src="imgs/i8/0.gif" />
+				</li>
+				<li>
+					<div>
+						<br/>
+						<p>Mac翻新产品!!!</p>
+						<p>iPod翻新产品!!!</p>
+					</div>
+					<img src="imgs/i8/0.gif" />
+				</li>
+				<li>
+					<div>
+						<b>翻新笔记本</b><br/><br/>
+						<p>RMB 5,788起最多降低了35%</p>
+					</div>
+					<img src="imgs/i8/0.gif" />
+				</li>
+				<li>
+					<div>
+						<b>翻新台式机</b><br/><br/>
+						<p>RMB 7,698起最多降低了46%</p>
+					</div>
+					<img src="imgs/i8/0.gif" />
+				</li>
+				<li>
+					<div>
+						<b>MAC完全解析</b>
+					</div>
+					<img src="imgs/i8/0.gif" />
+				</li>
+			</ul>
+		</div>
+		
+		<span id="s1">向上</span>
+		<span id="s2">向下</span>
+	</div>
+</body>
+</html>

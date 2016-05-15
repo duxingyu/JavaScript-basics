@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自动轮换选项卡</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style type="text/css">
+		#wrap{width: 300px;height: 120px;padding: 10px;border: 1px solid #000;margin: 30px auto;}
+		#menuBar{height: 30px;margin-bottom: 1px;}
+		#menuBar li{width: 80px;height: 30px;float: left;background: #94ffc6;text-align: center;margin-right: 1px;}
+		#menuBar .active{background: #005a63;color: #fff;}
+		#menuBar h2{display: inline;line-height: 30px;font-size: 12px;}
+		#main{}
+		#main ul{position: relative;display: none;}
+		#main li{width: 300px;height: 30px;}
+		#main img{display: none;position: absolute;top: 0;left: 0;width: 200px;height: 89px;}
+		#main h3{width: 100px;height: 29px;margin-bottom: 1px;float: right;background: #f7f7f7;text-indent: 20px;line-height: 29px;font-size: 12px;color: #000;}
+		#main .active{display: block;}
+		#main .dis{}
+		#main .dis img{display: inline-block;}
+		#main .dis h3{background: #639cc6;color: #fff;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oMenu = document.getElementById('menuBar');
+			var oMain = document.getElementById('main');
+			var aMenuLi = oMenu.getElementsByTagName('li');
+			var aMainUl = oMain.getElementsByTagName('ul');
+			var aMainLi0 = aMainUl[0].getElementsByTagName('li');
+			var aMainLi1 = aMainUl[1].getElementsByTagName('li');
+			var onOff = true;
+			var num = 0;
+			var timer = null;
+			
+				function autoTab() {
+					if (onOff) {
+						aMenuLi[0].className = 'active';
+						aMenuLi[1].className = '';
+						aMainUl[0].className = 'active';
+						aMainUl[1].className = '';
+						for (var i = 0; i < aMainLi0.length; i++) {
+							aMainLi0[i].className = '';
+						}
+						aMainLi0[num].className = 'dis';
+						num++;								
+						num%=aMainLi0.length;
+						if (num == 0) {
+							onOff = false;
+							
+						}
+					}else{
+						aMenuLi[0].className = '';
+						aMenuLi[1].className = 'active';
+						aMainUl[0].className = '';
+						aMainUl[1].className = 'active';
+						for (var i = 0; i < aMainLi1.length; i++) {
+							aMainLi1[i].className = '';
+						}
+						aMainLi1[num].className = 'dis';
+						num++;
+						num%=aMainLi1.length;
+						if (num == 0) {
+							onOff = true;
+							
+						}
+					}
+					
+				}
+			timer = setInterval(autoTab,1000);
+		
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<ul id="menuBar">
+			<li class="active">
+				<h2>菜单一</h2>
+			</li>
+			<li>
+				<h2>菜单二</h2>
+			</li>
+		</ul>
+		<div id="main">
+			<ul class="active">
+				<li class="dis">
+					<img src="imgs/i8/8-4p1.gif">
+					<h3>图片一</h3>
+				</li>
+				<li>
+					<img src="imgs/i8/8-4p2.gif">
+					<h3>图片二</h3>
+				</li>
+				<li>
+					<img src="imgs/i8/8-4p3.jpg">
+					<h3>图片三</h3>
+				</li>
+			</ul>
+			<ul >
+				<li>
+					<img src="imgs/i8/8-4p2.gif">
+					<h3>图片一</h3>
+				</li>
+				<li>
+					<img src="imgs/i8/8-4p1.gif">
+					<h3>图片二</h3>
+				</li>
+				<li>
+					<img src="imgs/i8/8-4p3.jpg">
+					<h3>图片三</h3>
+				</li>
+			</ul>
+		</div>
+	</div>	
+</body>
+</html>

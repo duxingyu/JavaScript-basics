@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>延时消失的菜单</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style type="text/css">
+		.wrap{width: 520px;height: 200px;margin: 30px auto;}
+		#topMenu{height: 36px;border: 1px solid #000;width: 520px;background: #215a9c;border-radius: 5px;}
+		#topMenu a{float: right;color: #fff;padding-right: 20px;line-height: 36px;}
+		#nav {float: left;padding-left: 10px;}
+		#nav li{float: left;padding: 0 25px 0 25px;font-size: 14px;text-align: center;line-height: 36px;color: #fff;border-right: 1px solid #fff;}
+		#nav .active{background: #638cad;}
+		#navList{position: relative;}
+		#navList ul{width: 240px;height: 25px;background: #d6e7ef;border: 1px solid #94b5d6;border-radius: 5px;padding: 0 25px 0 10px;display: none;position: absolute;top: 10px;}
+		#navList li{color: #21639c;font-size: 12px;float: left;padding: 0 7px 0 8px;line-height: 25px;border-right: 1px solid #7b5ab5;}
+		#navList .active{display: block;}
+	</style>
+	<script type="text/javascript"> 
+		window.onload = function () {
+			var oNav = document.getElementById('nav');
+			var aNli = oNav.getElementsByTagName('li');
+			var onavList = document.getElementById('navList');
+			var aUl = onavList.getElementsByTagName('ul');
+			var aNLli = onavList.getElementsByTagName('li');
+			var that = null;
+			var timer = null;
+			for (var j = 0; j < aNli.length; j++) {
+				aNli[j].index = j;				
+				aNli[j].onmouseover = function(){
+					for (var i = 0; i < aNli.length; i++) {
+						aNli[i].className = '';
+					}that = this.index;
+
+					this.className = 'active';
+					aUl[this.index].className = 'active';
+					aUl[this.index].style.left = (this.index)*75+8+'px';
+					show();
+				}
+				aNli[j].onmouseout = function(){
+					hide();
+				}
+			}
+			for (var i = 0; i < aUl.length; i++) {
+				aUl[i].onmouseover = show;
+				aUl[i].onmouseout = hide;
+			}
+			function show(){
+				clearInterval( timer );
+				for (var i = 0; i < aUl.length; i++) {
+					aUl[i].className = '';
+				}
+				aUl[that].className = 'active';
+			}
+			function hide(){
+				timer = setTimeout(function(){
+					aUl[that].className = '';
+				}, 2000);
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<div id="topMenu">
+			<ul id="nav">
+				<li class="active">首页</li>
+				<li>关于我们</li>
+				<li>作品</li>
+				<li>博客</li>
+			</ul>
+			<a href="">更多>></a>
+		</div>	
+		<div id="navList">
+			<ul>
+				<li>最近更新</li>
+				<li>活动</li>
+				<li>报名试听</li>
+				<li>学员反馈</li>
+			</ul>
+			<ul>
+				<li>最近更新2</li>
+				<li>活动</li>
+				<li>报名试听</li>
+				<li>学员反馈</li>
+			</ul>
+			<ul>
+				<li>最近更新3</li>
+				<li>活动</li>
+				<li>报名试听</li>
+				<li>学员反馈</li>
+			</ul>
+			<ul>
+				<li>最近更新4</li>
+				<li>活动</li>
+				<li>报名试听</li>
+				<li>学员反馈</li>
+			</ul>
+		</div>
+		
+	</div>
+</body>
+</html>
