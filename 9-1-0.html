@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+
+<script src="9-1.js"></script>
+<script>
+window.onload = function () {
+	var str = '';
+	var len = 20;
+	var aDiv = document.getElementsByTagName('div');
+	var timer = null;
+	var num = 0;
+	var onOff = true;
+	for ( var i=0; i<len; i++ ) {
+		str += '<div style="width:50px; height:50px; background:red; position:absolute; top:0px; left:'+ i*60 +'px;"></div>';
+	}
+	
+	document.body.innerHTML = str;
+	
+	document.onclick = function () {
+		clearInterval( timer );
+		timer = setInterval( function (){
+			if (onOff == true) {
+				doMove( aDiv[num],'top', 23, 500);
+				num ++;
+				if ( num === len ) {
+					onOff = false;
+					clearInterval( timer );
+					num = 0;
+				}
+			}else{
+				doMove( aDiv[num],'top', 23, 0);
+				num ++;
+				if ( num === len ) {
+					onOff = true;
+					clearInterval( timer );
+					num = 0;
+				}
+			}			
+		}, 100 );
+	};
+};
+</script>
+
+</head>
+
+<body>
+</body>
+</html>
+

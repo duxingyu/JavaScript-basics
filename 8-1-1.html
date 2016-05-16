@@ -6,8 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="reset.css">
 	<style type="text/css">
 		.wrap{width: 166px;height: 450px;margin: 30px auto;position: relative;background: #fff;}
-		.title{background: #294a73;height: 24px;}
-		.title h1{font-size: 12px;color: #fff;Int: left;text-indent: 10px;line-height: 24px;}
+		h1{font-size: 12px;color: #fff;;text-indent: 10px;line-height: 24px;background: #294a73;height: 24px;}
 		#div1{overflow: hidden;height: 380px;position: relative;margin-top: 24px;}
 		#img1{position: absolute;top: 0;left: 0;margin-top: 0;}
 		span{position: absolute;left: 0;width: 166px;background: #efefe7;height: 22px;display: block;line-height: 22px;font-size: 12px;text-align: center;cursor: pointer;}
@@ -21,41 +20,36 @@
 		var oS2 = document.getElementById('s2');
 		var oDiv = document.getElementById('div1');
 		var oImg = document.getElementById('img1');
-		var timer = null;
-		var speed = parseInt(getStyle(oImg,'top')); //0
+		
 		oS1.onmousedown = function(){
-			var high = parseInt(getStyle(oDiv,'height'))-parseInt(getStyle(oImg,'height')); // high = -338
-			timer = setInterval(function(){
-				if (speed < high) {
-					speed = high;
-				}
-				oImg.style.top = speed+'px';
-				speed -= 3;
-				if (speed == high) {
-					clearInterval(timer);
-				}
-
-			},20); 		
+			mouseDown(oImg,-3,-338);//-338:oDiv.height - oImg.height
 		}
 		oS1.onmouseup = function(){
-			clearInterval(timer);
+			clearInterval(oImg.timer);
 		}
-		oS2.onmousedown = function(){		
-			timer = setInterval(function(){
-
-				if (speed > 0) {
-					speed = 0;
-				}
-				oImg.style.top = speed+'px';
-				speed +=3;
-				if (speed == 0) {
-					clearInterval(timer);
-				}				
-			},20);													
+		oS2.onmousedown = function(){
+			mouseDown(oImg,3,0);
 		}
 		oS2.onmouseup = function(){
-			clearInterval(timer);
-		}	
+			clearInterval(oImg.timer);
+		}
+			
+		function mouseDown(obj,dir,target){
+			var speed = parseInt(getStyle(obj,'top'));
+			obj.timer = setInterval(function(){
+				if (speed < target && dir < 0) {
+					speed = target;
+				}
+				if (speed > target && dir > 0) {
+					speed = target;
+				}
+				obj.style.top = speed+'px';
+				speed = speed + dir;
+				if (speed == target) {
+					clearInterval(obj.timer);
+				}
+			},20); 		
+		}
 		function getStyle(obj,attr) {
 			return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
 		}
@@ -64,9 +58,7 @@
 </head>
 <body>
 	<div class="wrap">
-		<div class="title">
-			<h1>妙味课堂</h1>
-		</div>
+		<h1>商品滚动</h1>
 		<div id="div1"><img src="imgs/i8/8-1.gif" alt="" id="img1"></div>	
 		<span id="s1">向上</span>
 		<span id="s2">向下</span>
