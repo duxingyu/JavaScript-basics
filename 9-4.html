@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>opacity</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style>
+		#div1{width: 502px;height: 150px;margin: 200px auto;position: relative;overflow: hidden;}
+		#list{width: 500px;height: 50px;position: relative;border: 1px solid #000;}
+		#list li{position: absolute;width: 50px;height: 50px;top: 0;line-height: 50px;text-align: center;font-size: 30px;z-index: 1;}
+		#shade{width: 500px;height: 50px;position: absolute;top: 1px;left: -500px;background: #6bf7ef;}
+	</style>
+	<script src="9-1.js"></script>
+	<script>
+	window.onload = function(){
+		var oList = document.getElementById('list');
+		var aLi = oList.getElementsByTagName('li');
+		var oShade = document.getElementById('shade');
+		var num = 0;
+		for (var i = 0; i < aLi.length; i++) {
+			aLi[i].style.left = i*50+'px';
+		}
+		oList.onclick = function(){
+			oShade.style.left = parseInt(getStyle(oShade,'left'))+'px';
+			modOpacity(oShade,0.1,200);
+			doMove(oShade,'left',20,0);
+
+			var a1 = setInterval(function(){
+				if (num <aLi.length) {
+					modOpacity(aLi[num],0.1,50);
+					doMove(aLi[num],'top',5,100);
+					num++;
+				}else{
+
+					clearInterval(a1);
+					var a2 = setTimeout(function(){
+						for (var i = 0; i < aLi.length; i++) {
+							aLi[i].style.opacity = 1;
+							aLi[i].style.top = 0+'px';						
+						}
+
+						num = 0;
+						oShade.style.left = '-500px';
+						oShade.style.opacity = '1';
+					},1000);
+				}		
+			},200);	
+		}
+	}
+
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<ul id="list">
+			<li>+1</li>
+			<li>+1</li>
+			<li>+1</li>
+			<li>+1</li>
+			<li>+1</li>
+			<li>+1</li>
+			<li>+1</li>
+			<li>+1</li>
+			<li>+1</li>
+			<li>+1</li>
+		</ul>
+		<div id="shade"></div>	
+	</div>
+</body>
+</html>

@@ -29,4 +29,15 @@ function doMove ( obj, attr, dir, target,endFn ) {
 	}, 30);
 }
 
-function getStyle ( obj, attr ) { return obj.currentStyle?obj.currentStyle[attr] : getComputedStyle( obj )[attr]; }
+function modOpacity(obj,dir,sec,endFn) {
+	var opa = setInterval(function(){
+	var speed = parseFloat(getStyle(obj,'opacity'))-dir;
+	if (speed == 0) {
+		clearInterval(opa);
+		endFn && endFn();
+	}
+	obj.style.opacity = speed;
+	},sec);
+}
+
+function getStyle(obj,attr) {return getComputedStyle?getComputedStyle(obj)[attr]:obj.currentStyle[attr];}
