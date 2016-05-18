@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>时钟特效</title>
+  <link rel="stylesheet" href="reset.css" media="screen" title="no title" charset="utf-8">
+  <style media="screen">
+    #list{height: 172px;overflow: hidden;margin: 50px;width: 732px;}
+    #list li{width: 122px;float: left;position: relative;height: 172px;}
+    #list img{position: absolute;left: 0;}
+    #list .i1{top: 0;}
+    #list .i2{top: 172px;}
+  </style>
+  <script src="9-1.js"></script>
+  <script type="text/javascript">
+      window.onload = function(){
+        var oList = document.getElementById('list');
+        var aLi = oList.getElementsByTagName('li');
+        var aImg = oList.getElementsByTagName('img');
+        for (var i = 0; i < aImg.length; i++) {
+          aImg[i].style.top = getStyle(aImg[i],'top');
+        }
+        getTimeN();
+        setInterval(getTimeN,1000);
+        var timer = setInterval(arr,1000);
+
+        function arr (){
+          for (var i = 0; i < aImg.length; i++) {
+            if (parseInt(aImg[i].style.top) == 0) {fn1(i);}
+            if (parseInt(aImg[i].style.top) == 172) {fn2(i);}
+          }
+        }
+        function fn1(i) {
+          setTimeout(function(){
+            doMove(aImg[i],'top',10,-172,function(){
+              aImg[i].style.top = '172px';
+            });
+          },200);
+        }
+        function fn2(i) {
+          setTimeout(function(){
+            doMove(aImg[i],'top',10,0);
+          },200);
+        }
+        function getTimeN() {
+          var time = new Date();
+          var iHours = time.getHours();
+          var iMinutes = time.getMinutes();
+          var iSeconds = time.getSeconds();
+          var str = addZero(iHours)+addZero(iMinutes)+addZero(iSeconds);
+
+          for (var i = 0; i < aLi.length; i++) {
+            aImg[2*i].src = 'imgs/i10/'+str.charAt(i)+'.JPG';
+            aImg[2*i+1].src = 'imgs/i10/'+str.charAt(i)+'.JPG';
+            if (aImg[2*i].src != aImg[2*i+1].src) {alert(i);}
+          }
+        }
+
+        function addZero(n) {return n<10 ? '0'+n : ''+n;}      // string || num => string
+
+
+
+      }
+  </script>
+</head>
+<body>
+  <div id="wrap">
+    <ul id="list">
+      <li>
+        <img src="" alt="" class="i1" />
+        <img src="" alt="" class="i2" />
+      </li>
+      <li>
+        <img src="" alt="" class="i1" />
+        <img src="" alt="" class="i2" />
+      </li>
+      <li>
+        <img src="" alt="" class="i1" />
+        <img src="" alt="" class="i2" />
+      </li>
+      <li>
+        <img src="" alt="" class="i1" />
+        <img src="" alt="" class="i2" />
+      </li>
+      <li>
+        <img src="" alt="" class="i1" />
+        <img src="" alt="" class="i2" />
+      </li>
+      <li>
+        <img src="" alt="" class="i1" />
+        <img src="" alt="" class="i2" />
+      </li>
+
+    </ul>
+  </div>
+</body>
+</html>
