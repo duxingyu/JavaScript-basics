@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>排序</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<style type="text/css">
+		body{background: #f1f1f1;}
+		.wrap{width: 1280px;}
+		#ctrl{text-align: center;padding:30px 0 20px 0; }
+		#ctrl input{width: 116px;height: 36px;border: none;background: #099;color: #fff;font-size: 12px;text-align: center;line-height: 36px;}
+		#list{padding: 0 0 0 30px;}
+		#list li {float: left;height: 223px;width: 280px;padding: 10px;background: #fff;margin-right: 2px;}
+		#list img{}
+		#list h2{font-size: 18px;color: #069;height: 43px;background: #f1f1f1;text-align: center;line-height: 43px;}
+	</style>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oCtrl = document.getElementById('ctrl');
+		var oList = document.getElementById('list');
+		var aInp = oCtrl.getElementsByTagName('input');
+		var aLi = oList.getElementsByTagName('li');
+		var aImg = oList.getElementsByTagName('img');
+		var aH2 = oList.getElementsByTagName('h2');
+		var onOff = true;
+		var json = {
+			'url':['imgs/i12/1.jpg','imgs/i12/2.jpg','imgs/i12/3.jpg','imgs/i12/4.jpg','imgs/i12/5.jpg','imgs/i12/6.jpg','imgs/i12/7.jpg','imgs/i12/8.jpg'],
+			'h2':['1、温馨办公','2、游戏桌面','3、汽车摇滚','4、狭路相逢','5、棒球小子','6、球鞋动力','7、游戏官网','8、指尖社区']
+		}
+		var arr = [0,1,2,3,4,5,6,7];
+		fn1();
+		aInp[0].onclick = function () {
+			if (onOff) {
+				this.value = '从小到大';
+				arr.sort(toB);
+				fn1();
+			}else{
+				this.value = '从大到小';
+				arr.sort(toS);
+				fn1();
+			}
+			onOff = !onOff;
+		}
+		aInp[1].onclick = function () {
+			arr.sort(toR);
+			fn1();
+		}
+		function toB(a,b) {
+			return b - a;
+		}
+		function toS(a,b) {
+			return a - b;
+		}
+		function toR() {
+			return Math.random()-0.5;
+		}
+		function fn1() {
+			for (var i = 0; i < aLi.length; i++) {
+				aImg[i].src = json.url[arr[i]];
+				aH2[i].innerHTML = json.h2[arr[i]];
+			}
+		}
+
+
+	};
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<div id="ctrl">
+			<input type="button" name="" value="从大到小">
+			<input type="button" name="" value="打乱顺序">
+		</div>	
+		<ul id="list">
+			<li>
+				<img src="" alt="">
+				<h2></h2>
+			</li>
+			<li>
+				<img src="" alt="">
+				<h2></h2>
+			</li>
+			<li>
+				<img src="" alt="">
+				<h2></h2>
+			</li>
+			<li>
+				<img src="" alt="">
+				<h2></h2>
+			</li>
+			<li>
+				<img src="" alt="">
+				<h2></h2>
+			</li>
+			<li>
+				<img src="" alt="">
+				<h2></h2>
+			</li>
+			<li>
+				<img src="" alt="">
+				<h2></h2>
+			</li>
+			<li>
+				<img src="" alt="">
+				<h2></h2>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
