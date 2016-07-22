@@ -1,14 +1,18 @@
 "use strict";
-var aaa = "javascript";
-// label语句
-/*start: for (var i = 0; i < 10; i++) {
-  alert(i);
-  if (i == 4) {
-    break start;
+var a = [1,2,3,4,5];
+// alert(a.indexOf(2));
+/*
+alert(a.forEach(function (item, index, array){
+  array.sort(function (a,b){return b-a;});
+}));*/
+// alert(a);
+function doSomething () {
+  for (var i = 0; i < 1000000; i++) {
+    var sum = 0;
+    sum += i;
   }
-}*/
-function doAdd(num1,num2) {
-  arguments[1] = 10;
-  alert(num1 + num2);
 }
-doAdd(1,2);
+var start = +new Date() || Date.now();
+doSomething();
+var stop = +new Date() || Date.now();
+// alert(stop - start);
