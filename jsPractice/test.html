@@ -6,7 +6,7 @@
   <style type="text/css">
 
   </style>
-  <script src="text.js" defer></script>
+  
   <script type="text/javascript">
   // alert('<\/script>');
   </script>
@@ -15,5 +15,18 @@
   <noscript>
     <p>javascript</p>
   </noscript>
+  <input type="button" name="" onclick="alert('点击！')" value="click1">
+  <input type="button" name="" onclick="showMessage()" value="click2">
+  <input type="button" name="" onmouseover="alert(event.type)" value="click3">
+  <input type="button" name="four" onmousedown="alert(this.name)" value="click4">
+  <input type="button" name="five" onmouseover="alert(event.relatedTarget)" value="click5">
+  <form method="post" >
+  <input type="text" name="username" value="用户名">
+    <input type="button" name="" onclick="alert(form.method + '+' + username.value)" value="click6">
+    <input type="submit" name="" value="提交">
+  </form>
+  <input type="button" name="" id="btn1" value="btn1">
+  <input type="button" name="" id="btn2" value="btn2">
+  <script src="text3.js"></script>
 </body>
 </html>
