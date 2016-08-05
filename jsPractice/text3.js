@@ -61,10 +61,37 @@ btn.onmousemove = function (event) {
   var event = event || window.event;
   btn.value = event.clientX + ',' + event.clientY + '===' + event.screenX + ',' + event.screenY;
 };
-
+/*
 btn2.onclick = function (event) {
   var event = event || window.event;
   if (event.ctrlKey) {
     this.style.background = 'red';
   }
+};*/
+/*
+window.onbeforeunload = function (event) {
+  var event = event || window.event;
+  var message = "Do you want to leave?";
+  event.returnValue = message;
+  return message;
 };
+*/
+var list = document.getElementById('list');
+list.onclick = function (event){
+  var event = event || window.event;
+  var target = event.target || event.srcElement;
+  switch (target.id) {
+    case 'l1' : alert(1);break;
+    case 'l2' : alert(2);break;
+    case 'l3' : alert(3);break;
+  }
+};
+/*
+var event = document.createEvent("MouseEvents");
+
+event.initMouseEvent("click", true, true, document.defaultView, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+
+btn.dispatchEvent(event);
+*/
+
+// console.log('aaaa');
