@@ -6,10 +6,31 @@
 </head>
 <body>
   <form method="post" action="#">
-    <input type="text" name="username" placeholder="请输入用户名">
-    <input type="password" name="password" placeholder="请输入密码">
+    <input type="text" name="username" placeholder="请输入用户名" required>
+    <input type="password" name="password" placeholder="请输入密码" autofocus>
     <button type="submit" name="submit">提交</button>
+    <input type="reset" name="" value="重置1">
+    <button type="reset">重置2</button>
+    <label>男<input type="radio" name="sex" value="boy"></label>
+    <label>女<input type="radio" name="sex" value="girl"></label>
+    <textarea style="resize: none;">请输入自我介绍。。。（不少于500字）</textarea>
+    <input type="text" name="" >
+    <input type="email" name="" required>
   </form>
+  <form method="get" action="#">
+  <input type="text" name="" value="请输入电话号码">
+  <select>
+    <option>AAA</option>
+    <option>BBB</option>
+    <option>CCC</option>
+  </select>
+  <input type="button" name="" value="清除所有选项">
+  </form>
+  <div style="width: 100px;height: 100px;background: #f50;" contenteditable></div>
+  <iframe src="" name="richedit" style="width: 500px;height: 500px;"></iframe>
+  <input type="button" name="" value="修改字体" onclick="editer.document.execCommand('fontname',false,'微软雅黑')">
+  <input type="button" style="display: none;" name="" id="hid">
+  <input type="button" name="" value="转移" id="move">
   <script type="text/javascript" src="text4.js"></script>
 </body>
 </html>
