@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>临时文件</title>
+</head>
+<body>
+  <script type="text/javascript">
+    var a = {
+      b: {
+        m: function() {
+          console.log(this.p);
+        },
+        p: 'Hello'
+      },
+      p: 'On NO!'
+    };
+    var p = "aaa";
+
+var hello = a.b.m;
+hello(); // undefined
+  </script>
+  <script type="text/javascript" src="linshi.js"></script>
+</body>
+</html>
