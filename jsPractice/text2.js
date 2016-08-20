@@ -55,7 +55,7 @@ person.publicMethod();
   }  
 
   // 构造函数
-  MyObject = function(){};
+  var MyObject = function(){};
   // 公有/特权方法
   MyObject.prototype.publicMethod = function () {
     privateVariable++;
